@@ -6,9 +6,6 @@ Description:
     Le dernier score va etre enregistre pour que chaque fois l'utilisateur va jouer il peut se reflechir a son dernier
      score ce qui doit etre surmonte.
      Il y a aussi un guide pour les utilisateurs qui ne connait pas le jeu.
-1 ere partie(1ere commit):
-    j ai initialiser le code html et une partie de code css et js ,le but de avoir l'apparence de jeu initiale avant de 
-    avancer au code css et js .
 Technologies utilisées:
         J'ai utilisé des animations css pour mettre le jeu plus beau et j'ai utiliseé des fichiers audios pour rendre 
         le jeu plus amusant surtout pour la categorie des enfants ainsi des svg pour les icons de sons 
