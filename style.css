@@ -186,10 +186,10 @@
         
 
         
-        .container.iframe-active .buttons {
+       .container.iframe-active .buttons {
             
-            
-            left: 0%;            
+            display: none;
+                     
         }
 
         .action-button {
@@ -211,45 +211,48 @@
             transform: translateY(-2px);
         }
 
-        /*hidden par defaut*/
-        .iframe-container {
-           
-            position: absolute;
-            top: 10%;
-            left: 25%;
-            display: none;
-            min-width: max-content;
-            flex-wrap: wrap;
-            min-height: max-content;
-            width: 80%;
-            transition: all 1s ;
-         
-        }
-
-        .container.iframe-active .iframe-container {
-            display: flex;
-        }
+        
 
         .content-iframe {
             width: 90%;
             height: 80vh;
+            
             border: none;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             background: white;
         }
+        /* Invisible par défaut */
+        .iframe-container {
+            position: absolute;
+            top: 50%;
+            left: 55%;
+            transform: translate(-50%, -50%) scale(0); 
+            display: flex;
+            min-width: max-content;
+            flex-wrap: wrap;
+            min-height: max-content;
+            width: 80%;
+            transition: all 0.5s ease;
+            opacity: 0; 
+}
+     /* le iframe Devient visible */
+    .container.iframe-active .iframe-container {
+        transform: translate(-50%, -50%) scale(1); 
+        opacity: 1;
+}
 
         
         .back-button {
             position: absolute;
             top: 15%;
            
-            left: 0%;
+            left: 1%;
             padding: 10px 20px;
-            background-color: #6a11cb;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
             border: none;
             border-radius: 5px;
-            color: white;
+            color: beige;
             cursor: pointer;
            
             display: none;
@@ -257,17 +260,21 @@
 
         .container.iframe-active .back-button {
             display: block;
+            transition: all 1s ease;
+
+            
         }
        .back{
-        width: 40px;
-        height: 40px;
-       }
+        width: 30px;
+        height: 30px;
+       } 
+       /*lorsque on lance le jeu sur un telephone ou tablette :*/
        @media (max-width: 768px) {
     .buttons {
-        position: relative ;
+        position: absolute ;
         
-        top: auto ;
-        left: auto ;
+        top: 1% ;
+        left: 10%;
         min-width: max-content;
         min-height: max-content;
         width: 70% ;
@@ -276,11 +283,13 @@
     }
     
     .iframe-container {
-        position: relative ;
-        top: auto ;
-        left: auto ;
-        width: 95% ;
-        margin: 10px auto;
+        position: absolute ;
+        top:  50%;
+        left:63% ;
+        min-width: max-content;
+        min-height: max-content;
+        
+        width: 90% ;
     }
     
     .container {

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reaction Rapide</title>
     <link rel="stylesheet" href="style.css">
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
     
 </head>
 <body >
@@ -30,9 +30,9 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
 </svg></button>
     <div class="buttons" id="buttons">
-    <button class="action-button" id="bt1" >Jouer</button>
-    <button class="action-button" id="bt2" >Highest Score</button>
-    <button class="action-button" id="bt3" >About</button></div>
+    <button class="action-button" id="bt1" data-function="startGame" >Jouer</button>
+    <button class="action-button" id="bt2" data-function="affichageScore">Last Try</button>
+    <button class="action-button" id="bt3" data-function="Guide">About</button></div>
     <div class="iframe-container" id="iframeContainer">
             <iframe class="content-iframe" id="contentIframe"></iframe>
         </div>
