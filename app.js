@@ -115,6 +115,7 @@
     
             if (this.classList.contains('active')) {
                 audio.play();
+                audio.loop=true;
             } else {
                 audio.pause();
             }   
