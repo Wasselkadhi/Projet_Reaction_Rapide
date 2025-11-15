@@ -4,7 +4,7 @@
             padding: 0;
             height: 100vh;
             overflow: hidden;
-            background-color:beige;
+            background-color:lightblue;
             display: flex;
             justify-content: center;
 
@@ -28,14 +28,14 @@
         @keyframes splash-animation {
             0% {
                 transform: scale(0);
-                opacity: 0.8;
+                opacity:1;
             }
             50% {
-                opacity: 0.4;
+                opacity:0.6;
             }
             100% {
                 transform: scale(1);
-                opacity: 0;
+                opacity: 1;
             }
         }
         .buttons{
@@ -55,86 +55,96 @@
 
  }
 
-        #bt1{
-            border-radius: 20px;
-            background: linear-gradient(45deg, #6a11cb, #2575fc);
-       
-            min-width: max-content;
-            flex-wrap: wrap;
-           justify-content: center;
-           
-            font-size: large;
-            font-style: italic;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            border-color: lightblue;
-            color: blanchedalmond;
-            width: 65%;
-            box-shadow: 3px 5px 5px 3px lightblue;
-            height: 65%;
-          
+          .lightning-bolt {
+            position: absolute;
+            width: 8px;
+            background: linear-gradient(to bottom, 
+                transparent 0%, 
+                #ffff00 20%, 
+                #ffffff 50%, 
+                #ffff00 80%, 
+                transparent 100%);
+            border-radius: 4px;
+            filter: blur(1px) drop-shadow(0 0 10px #ffff00);
+            transform-origin: top center;
+            pointer-events: none;
+            z-index: 1000;
         }
-        #bt1:hover{
-            animation: hop 3s linear  infinite  ;
 
+        .lightning-explosion {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, 
+                rgba(255,255,0,0.8) 0%, 
+                rgba(255,255,0,0.4) 30%, 
+                transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999;
+            animation: explode 0.6s ease-out forwards;
         }
-        @keyframes hop {
+
+        .shockwave {
+            position: absolute;
+            border: 2px solid rgba(255, 255, 0, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 998;
+            animation: shockwave 1s ease-out forwards;
+        }
+
+        @keyframes explode {
             0% {
-                transform: translateY(0%);
-
-            }
-            50% {
-                transform: translateY(10%);
-
+                transform: scale(0);
+                opacity: 1;
             }
             100% {
-                transform: translateY(10%);
-
+                transform: scale(2);
+                opacity: 0;
             }
         }
+
+        @keyframes shockwave {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
+                margin-left: 0;
+                margin-top: 0;
+            }
+            100% {
+                width: 200px;
+                height: 200px;
+                opacity: 0;
+                margin-left: -100px;
+                margin-top: -100px;
+            }
+        }
+
        
-        #bt2{
-             border-radius: 20px;
-            background: linear-gradient(45deg, #6a11cb, #2575fc);
-     
-        min-width: max-content;
-            
-            flex-wrap: wrap;
-           justify-content: center;
-           
-            font-size: large;
-            font-style: italic;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            border-color: lightblue;
-            color: blanchedalmond;
-            width: 65%;
-            box-shadow: 3px 5px 5px 3px lightblue;
-            height: 60%;
-        }
-        #bt2:hover{
-            animation: hop 3s linear  infinite  ;
 
-        }
-        #bt3{
-             border-radius: 20px;
-            background: linear-gradient(45deg, #6a11cb, #2575fc);
-            min-width: max-content;
-     
-           
-            flex-wrap: wrap;
-           justify-content: center;
-            font-size: large;
-            font-style: italic;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            border-color: lightblue;
-            color: blanchedalmond;
-            width: 65%;
-            box-shadow: 3px 5px 5px 3px lightblue;
-            height: 60%;
-        }
-        #bt3:hover{
-            animation: hop 3s linear  infinite  ;
+      
+        .action-button{
+            padding: 15px 30px;
+            background:  linear-gradient(45deg, #b3a4c3, #588de9);
+            border: 1px solid rgba(124, 60, 60, 0.3);
+            color: black;
+            font-size: 1.1rem;
 
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            backdrop-filter: blur(10px);
+            width: 150px;
+            text-align: center;
+            transition: all 0.3s ease;
         }
+          .action-button:hover {
+            background:  linear-gradient(45deg, #6a11cb, #2575fc);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px black;
+          }
        
        .nav {
             width: 60px;
@@ -192,25 +202,6 @@
                      
         }
 
-        .action-button {
-            padding: 15px 30px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            border-radius: 10px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            width: 200px;
-            text-align: center;
-        }
-
-        .action-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
         
 
         .content-iframe {
@@ -249,7 +240,8 @@
            
             left: 1%;
             padding: 10px 20px;
-            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            background:  linear-gradient(45deg, #b3a4c3, #588de9);
+
             border: none;
             border-radius: 5px;
             color: beige;
@@ -257,6 +249,11 @@
            
             display: none;
         }
+         .back-button:hover{
+            background:  linear-gradient(45deg, #6a11cb, #2575fc);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px black;
+    }
 
         .container.iframe-active .back-button {
             display: block;
@@ -304,6 +301,11 @@
         top: 10% ;
         left: 0% ;
         margin: 10px;
+    }
+    .back-button:hover{
+            background:  linear-gradient(45deg, #6a11cb, #2575fc);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px black;
     }
     .back{
         width: 20px;
