@@ -24,6 +24,7 @@
 
 ## Nouveautés explorées:
         l'attribut defer qui execute le code js apres le chargement de html
+        l'attribut srcdoc qui nous permet de afficher une page sur iframe avec son code et non sol lien
 ## Difficultés rencontrées:
 
 
