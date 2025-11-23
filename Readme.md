@@ -21,6 +21,7 @@
         ce signal tu doit cliquer/toucher l'ecran et un temps de reaction va etre afficher avec une Description sur 
         l'etat de votre reaction s'il est rapide lente ou exc..
         lors de clique a chaque button un message vocale va etre lancer pour descriver le contenu que le button fournira
+        si l'utilisateur commence le jeu mais clique avant le signal il va perdre le jeu et un message sera afficher pour le dire ça
         
 
 
