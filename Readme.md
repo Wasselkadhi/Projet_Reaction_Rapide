@@ -3,7 +3,7 @@
 ## Description:
     Ce projet consiste a faire un jeu ou on va tester la reaction d'un individu , ce individu va lancer le jeu ,
     lors de lancement de jeu l'ecran va changer de couleur apres un certain temps aleatoire un signal va etre donneé 
-    et l'utilisateur doit rapidement cliquer sur l 'ecran ,cette reactionn va etre calculer et afficher .
+    et l'utilisateur doit rapidement cliquer sur l 'ecran ,cette reaction va etre calculer et afficher .
     Le dernier score va etre enregistre pour que chaque fois l'utilisateur va jouer il peut se reflechir a son dernier
      score ce qui doit etre surmonte.
      Il y a aussi un guide pour les utilisateurs qui ne connait pas le jeu.
@@ -35,6 +35,7 @@
         comment afficher une page a partir de iframe sans utiliser un lien d'une page externe mais seulement le code
         manipuler les positions aleatoires pour l'effet de background 
         comment afficher le timer  et manipuler le temps de reaction 
+
 
 
 ## Solutions apportées:

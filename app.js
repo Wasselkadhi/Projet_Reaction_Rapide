@@ -159,156 +159,522 @@
             
         });
         function start(){
+            
             contentIframe.srcdoc = `
     <!DOCTYPE html>
-    <html>
-    <head>
-        <style>
-            body { 
-                background: linear-gradient(135deg, #667eea, #764ba2);
-                color: white;
-                font-family: Arial;
-                padding: 20px;
-            }
-            #but{
-            padding: 10px 20px;
-            background:  linear-gradient(45deg, #b3a4c3, #588de9);
-                  
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body { 
+            background: linear-gradient(135deg, #0c0c2e, #1e1e52, #323278);
             color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            }
-            #but_rec{
-                background:  linear-gradient(45deg, #b3a4c3, #588de9);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            padding: 10px;
+        }
 
-                cursor: pointer;
-                border: none;
-                border-radius: 5px;               
-                color: beige;
-                min-width: max-content;
-                padding: 10px 20px;
-               
-            
-            }
-            #container{
+        #container {
+            background: rgba(10, 10, 40, 0.9);
+            backdrop-filter: blur(10px);
+            border: 2px solid #00f7ff;
+            border-radius: 15px;
+            padding: 20px;
             text-align: center;
-             padding: 20px;
+            box-shadow: 
+                0 0 50px rgba(0, 247, 255, 0.3),
+                inset 0 0 50px rgba(0, 247, 255, 0.1);
+            max-width: 400px;
+            width: 100%;
+             max-height: 95vh;
+         
+        }
+
+     
+
+       
+
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            text-shadow: 
+                0 0 10px #00f7ff,
+                0 0 20px #00f7ff;
+            color: #00f7ff;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        #status {
+            font-size: 1.1em;
+            margin: 15px 0;
+            padding: 12px;
+            background: rgba(0, 247, 255, 0.1);
+            border-radius: 8px;
+            border: 1px solid #00f7ff;
+            transition: all 0.3s ease;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #timer {
+            font-size: 2.2em;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #00f7ff;
+            text-shadow: 0 0 10px #00f7ff;
+            font-family: 'Courier New', monospace;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .click-zone {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, #1a1a5a, #0c0c3a);
+            border: 3px solid #00f7ff;
+            border-radius: 50%;
+            margin: 15px auto;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 30px rgba(0, 247, 255, 0.3),
+                inset 0 0 30px rgba(0, 247, 255, 0.1);
+        }
+
+        .click-zone:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                0 0 40px rgba(0, 247, 255, 0.5),
+                inset 0 0 40px rgba(0, 247, 255, 0.2);
+        }
+
+        .click-zone.active {
+            background: radial-gradient(circle, #00f7ff, #0084ff);
+            box-shadow: 
+                0 0 50px #00f7ff,
+                inset 0 0 30px #ffffff;
+            animation: pulse 0.5s ease infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        button {
+            background: linear-gradient(45deg, #00f7ff, #0084ff);
+            border: none;
+            color: #0a0a2a;
+            padding: 12px 25px;
+            font-size: 1em;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.5);
+            width: 200px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 247, 255, 0.8);
+        }
+
+        #result {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(0, 247, 255, 0.1);
+            border-radius: 8px;
+            border: 1px solid #00f7ff;
+        }
+
+        #result h3 {
+            color: #00f7ff;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        //ajustement pour les telephones te les tablettes
+        @media (max-height: 600px) {
+            #container {
+                padding: 15px;
+                max-height: 98vh;
             }
-            #timer{
             
-                font-size: 48px; 
-                margin: 20px 0;
+            h2 {
+                font-size: 1.5em;
+                margin-bottom: 10px;
             }
-           #result{
-            margin-top: 20px;
-           }
-        </style>
-    </head>
-    <body>
-        
-    
-    
-        <div id="container" >
-            <h2>⏱️ Test de Réaction</h2>
-            <p id="status">Prêt...</p>
-            <div id="timer" style="">--</div>
-            <button onclick="initTimer()" id="but" >
-                Commencer
-            </button>
-            <div id="result" ></div>
+            
+            #status {
+                font-size: 1em;
+                margin: 10px 0;
+                padding: 8px;
+                min-height: 40px;
+            }
+            
+            #timer {
+                font-size: 1.8em;
+                margin: 10px 0;
+                min-height: 50px;
+            }
+            
+            .click-zone {
+                width: 120px;
+                height: 120px;
+                margin: 10px auto;
+            }
+            
+            button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+                width: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>⏱️ Reaction Test</h2>
+        <p id="status">Ready...</p>
+        <div id="timer">--</div>
+        <div class="click-zone" id="clickZone">
+            <div style="font-size: 0.8em; color: #00f7ff; text-align: center;">
+                CLICK ZONE
+            </div>
         </div>
-        <script>
-        setTimeout(()=>{const clickSound = new Audio('20251115_click_the_.mp3');
-            clickSound.play();},1000);
+        <button onclick="initTimer()" id="but">
+            Start
+        </button>
+        <div id="result"></div>
+    </div>
+    
+    <script>
+        setTimeout(() => {
+            const clickSound = new Audio('20251115_click_the_.mp3');
+            clickSound.play();
+        }, 1000);
        
+        let timerStartTime;
+        let timerInterval;
+        let time;
         
-       
-            let timerStartTime;
-            let timerInterval;
+        function initTimer() {
+            document.getElementById('but').style.display = 'none';
+            document.getElementById('status').style.color = 'white';
+            document.getElementById('status').textContent = 'Wait for the signal...';
+            document.getElementById('timer').textContent = '--';
+            document.getElementById('result').innerHTML = '';
             
-            function initTimer() {
-                    document.getElementById('but').style.display ='none';
-
-                document.getElementById('status').style.color = 'white';
-                document.getElementById('status').textContent = 'Attendez le signal...';
-                document.getElementById('timer').textContent = '--';
-                document.getElementById('result').innerHTML = '';
+         
+            
+            // Délai aléatoire entre 2 et 7 secondes
+            const randomDelay = Math.random() * 3000 + 4000;
+            
+            time = setTimeout(() => {
+                audio = new Audio('Wassel Kadhi_s Vidéo - Nov 15, 2025-VEED (10).mp3');
+                audio.play();
                 
-                // Délai aléatoire entre 2 et 7 secondes
-                const randomDelay = Math.random() * 3000 + 4000;
+                document.getElementById('status').textContent = 'CLICK NOW!';
+                document.getElementById('status').style.color = 'red';
+                timerStartTime = Date.now();
                 
-                setTimeout(() => {
-          
-
-                    audio= new Audio('Wassel Kadhi_s Vidéo - Nov 15, 2025-VEED (10).mp3')
-                            audio.play();
-                            
-                    document.getElementById('status').textContent = 'CLIQUEZ MAINTENANT!';
-                    document.getElementById('status').style.color = 'red';
-                    timerStartTime = Date.now();
-                    
-                    // Démarrer l'affichage du timer
-                    timerInterval = setInterval(() => {
-                        const currentTime = Date.now();
-                        const elapsed = (currentTime - timerStartTime) / 1000;
-                        document.getElementById('timer').textContent = elapsed.toFixed(3) + 's';
-                    }, 10);
-                    
-                }, randomDelay);
+                // Démarrer l'affichage du timer
+                timerInterval = setInterval(() => {
+                    const currentTime = Date.now();
+                    const elapsed = (currentTime - timerStartTime) / 1000;
+                    document.getElementById('timer').textContent = elapsed.toFixed(3) + 's';
+                }, 10);
+                
+            }, randomDelay);
+        }
+        
+        document.getElementById('clickZone').addEventListener('click', function(e) {
+            if (e.target.tagName === 'BUTTON' || e.target.id === 'but_rec') {
+                return;
             }
             
-            // Cliquer n'importe où dans l'iframe arrête le timer
-            document.body.addEventListener('click', function() {
-                if (timerStartTime) {
-                    clearInterval(timerInterval);
-                    const reactionTime = (Date.now() - timerStartTime) / 1000;
-                    document.getElementById('result').innerHTML = 
-                        '<h3>Votre temps de réaction: ' + reactionTime.toFixed(3) + ' secondes</h3>'+
-                        '<button onclick=initTimer() id="but_rec">Recommencer</button>' 
-                        ;
-                    if (reactionTime<=0.19){
-                    audio= new Audio('20251115_are_you_th.mp3')
-                            audio.play();
-                    }
-                    else if (reactionTime <=0.5){
-                         audio= new Audio('20251115_wow_thats_.mp3')
-                            audio.play();
-                    }else if(reactionTime <=1 && reactionTime > 0.5){
-                             audio= new Audio('20251115_Thats_not_.mp3')
-                            audio.play();
-                    }else{
-                         audio= new Audio('20251115_come_on__a.mp3')
-                            audio.play();
-                        }
-                    timerStartTime = null;
+            if (timerStartTime) {
+                clearInterval(timerInterval);
+                const reactionTime = (Date.now() - timerStartTime) / 1000;
+                document.getElementById('result').innerHTML = 
+                    '<h3>Your Reaction Time: ' + reactionTime.toFixed(3) + ' seconds</h3>' +
+                    '<button onclick="initTimer()" id="but_rec">Again</button>';
+                
+                if (reactionTime <= 0.19) {
+                    audio = new Audio('20251115_are_you_th.mp3');
+                    audio.play();
+                } else if (reactionTime <= 0.5) {
+                    audio = new Audio('20251115_wow_thats_.mp3');
+                    audio.play();
+                } else if (reactionTime <= 1 && reactionTime > 0.5) {
+                    audio = new Audio('20251115_Thats_not_.mp3');
+                    audio.play();
+                } else {
+                    audio = new Audio('20251115_come_on__a.mp3');
+                    audio.play();
                 }
-                    
-
-            });
-            
-            
-          
-            
-            
-        </script>
-    </body>
-    </html>
+                
+                timerStartTime = null;
+                time = null;
+                
+                
+            } else {
+                if (time) {
+                    clearTimeout(time);
+                    time = null;
+                }
+                audio = new Audio('Wassel Kadhi_s Vidéo - Nov 23, 2025-VEED.mp3');
+                audio.play();
+                document.getElementById('status').textContent = '❌ Too early!';
+                document.getElementById('status').style.color = 'red';
+                document.getElementById('result').innerHTML = 
+                    '<button onclick="initTimer()" id="but_rec">Again</button>';
+               
+            }
+        });
+    </script>
+</body>
+</html>
 `;
         }
         function affScore(){
-           contentIframe.srcdoc=`<center><h1>Last score </h1></center>
-           <script>
-          setTimeout(()=>{audio= new Audio('20251115_thats_your (1).mp3')
-           audio.play()},500);</script>`
+           contentIframe.srcdoc=` <!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body { 
+            background: linear-gradient(135deg, #0c0c2e, #1e1e52, #323278);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            padding: 10px;
+        }
+
+        #container {
+            background: rgba(10, 10, 40, 0.9);
+            backdrop-filter: blur(10px);
+            border: 2px solid #00f7ff;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 
+                0 0 50px rgba(0, 247, 255, 0.3),
+                inset 0 0 50px rgba(0, 247, 255, 0.1);
+            max-width: 400px;
+            width: 100%;
+             max-height: 95vh;
+         
+        }
+
+     
+
+
+
+        
+
+       
+
+      
+
+        }
+
+        
+        //ajustement pour les telephones te les tablettes
+        @media (max-height: 600px) {
+            #container {
+                padding: 15px;
+                max-height: 98vh;
+            }
+            
+          
+          
+    </style>
+</head>
+<body>
+    <div id="container">
+    <h3>Your last Score is:</h3>
+   
+    </div>
+    
+  <script>
+      setTimeout(() => {
+            const clickSound = new Audio('20251115_thats_your (1).mp3');
+            clickSound.play();
+        }, 1000);
+    
+    
+    
+    
+    </script>
+    
+     
+            
+         
+            
+         
+</body>
+</html>`
            
            
            ;}
         function GuideInfo(){
-           contentIframe.srcdoc=`<center><h1>Guide </h1></center>
-             <script>
-             setTimeout(()=>{audio= new Audio('20251115_wanna_know.mp3')
-           audio.play()},500)
-           ;</script>`
+           contentIframe.srcdoc=` <!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body { 
+            background: linear-gradient(135deg, #0c0c2e, #1e1e52, #323278);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            padding: 10px;
+        }
+
+        #container {
+            background: rgba(10, 10, 40, 0.9);
+            backdrop-filter: blur(10px);
+            border: 2px solid #00f7ff;
+            overflow: auto;
+            border-radius: 15px;
+            padding: 20px;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-shadow: 
+                0 0 50px rgba(0, 247, 255, 0.3),
+                inset 0 0 50px rgba(0, 247, 255, 0.1);
+                
+            
+            width: 80%;
+            height:350px;
+                   
+            line-height:30px;
+            
+         
+        }
+            h3 {
+             text-align: center;
+             text-shadow: 0px 5px 5px lightblue;
+               
+
+            }
+
+
+     
+
+
+
+        
+
+       
+
+      
+
+        }
+      
+
+        
+        //ajustement pour les telephones te les tablettes
+        @media (max-height: 600px) {
+            #container {
+            font-size:10px;
+            min-width:fit-content;
+            min-height:fit-content;
+            overflow:auto;
+
+                padding: 15px;
+                max-height: 98vh;
+            }
+        li {
+
+
+        
+        
+        }
+            
+          
+          
+    </style>
+</head>
+<body>
+
+    <div id="container">
+    <h3>How to play</h3>
+
+    <ol>
+    <li>Click on the button Play </li>
+    <li>Click "Start" to begin the test</li>
+    <li>Wait for the signal - A random delay of 2 to 7 seconds</li>
+    <li>When the "Click Now" message appears and you hear the sound, click as quickly as possible. !</li>
+    <li>Your reaction time will be displayed in milliseconds.</li>
+    </ol>
+    <h3>To find out the value of the last try</h3>
+    <ol>
+    <li>Click on the last score button</li>
+    <li>The score will be displayed directly</li>
+    </ol>
+    </div>
+    
+    <script>
+      setTimeout(() => {
+            const clickSound = new Audio('20251115_wanna_know.mp3');
+            clickSound.play();
+        }, 1000); 
+    
+    
+    
+    
+    </script>
+    
+  
+     
+            
+         
+            
+         
+</body>
+</html>`
         }
         

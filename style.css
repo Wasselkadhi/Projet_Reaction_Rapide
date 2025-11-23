@@ -226,6 +226,7 @@
             width: 80%;
             transition: all 0.5s ease;
             opacity: 0; 
+           
 }
      /* le iframe Devient visible */
     .container.iframe-active .iframe-container {
@@ -283,10 +284,11 @@
         position: absolute ;
         top:  50%;
         left:63% ;
-        min-width: max-content;
-        min-height: max-content;
+        min-width: fit-content;
+        min-height: fit-content;
         
         width: 90% ;
+        
     }
     
     .container {
