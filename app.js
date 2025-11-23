@@ -441,6 +441,7 @@
                 
                 
             } else {
+                //si on clique avant le signal on perd
                 if (time) {
                     clearTimeout(time);
                     time = null;
