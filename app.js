@@ -24,10 +24,10 @@
                 }, i * 30);
             }
 
-            // Sons d'éclair (optionnel)
+           
             
 
-            // Nettoyer les éléments après l'animation
+            // supprimer les effets apres un certain temps
             setTimeout(() => {
                 explosion.remove();
                 shockwave.remove();
@@ -101,7 +101,7 @@
         }
         
         setInterval(createSplash, 800);
-        
+        //pour avoir plusieurs splash au debut
         for (let i = 0; i < 5; i++) {
             setTimeout(createSplash, i * 300);
         }
@@ -380,6 +380,7 @@
         let timerInterval;
         let time;
         
+        
         function initTimer() {
             document.getElementById('but').style.display = 'none';
             document.getElementById('status').style.color = 'white';
@@ -421,7 +422,7 @@
                 document.getElementById('result').innerHTML = 
                     '<h3>Your Reaction Time: ' + reactionTime.toFixed(3) + ' seconds</h3>' +
                     '<button onclick="initTimer()" id="but_rec">Again</button>';
-                
+                localStorage.setItem('dernierTemps',reactionTime.toFixed(3) );
                 if (reactionTime <= 0.19) {
                     audio = new Audio('20251115_are_you_th.mp3');
                     audio.play();
@@ -511,10 +512,18 @@
       
 
         }
+        p{
+            text-align:center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 1.1rem;
+            font-weight:bold;
+            font-style:italic;
+        
+        }
 
         
         //ajustement pour les telephones te les tablettes
-        @media (max-height: 600px) {
+        @media (max-width: 720px) {
             #container {
                 padding: 15px;
                 max-height: 98vh;
@@ -527,6 +536,7 @@
 <body>
     <div id="container">
     <h3>Your last Score is:</h3>
+    <p id="p1"></p>
    
     </div>
     
@@ -535,8 +545,8 @@
             const clickSound = new Audio('20251115_thats_your (1).mp3');
             clickSound.play();
         }, 1000);
-    
-    
+    document.getElementById('p1').textContent=localStorage.getItem('dernierTemps')   ;
+   
     
     
     </script>
@@ -588,8 +598,9 @@
                 inset 0 0 50px rgba(0, 247, 255, 0.1);
                 
             
-            width: 80%;
-            height:350px;
+            width: 90%;
+            height:90vh;
+            
                    
             line-height:30px;
             
@@ -618,15 +629,18 @@
 
         
         //ajustement pour les telephones te les tablettes
-        @media (max-height: 600px) {
+        @media (max-width: 720px) {
             #container {
             font-size:10px;
+
             min-width:fit-content;
             min-height:fit-content;
             overflow:auto;
+            width:100%;
+            
 
-                padding: 15px;
-                max-height: 98vh;
+            padding: 15px;
+            max-height: 98vh;
             }
         li {
 

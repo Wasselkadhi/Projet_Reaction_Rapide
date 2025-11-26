@@ -12,6 +12,9 @@
         J'ai utilisé des animations css pour mettre le jeu plus beau et j'ai utiliseé des fichiers audios pour rendre 
         le jeu plus amusant surtout pour la categorie des enfants ainsi des svg pour les icons de sons 
         et boutton retour .
+        j'ai utilise les technologies de DOM ainsi un petit peut des technologies de BOM pour bien ameliorer l'experience d'utilisateur
+        j'ai utilisé les differentes methodes de css ainsi que html et js pour  rendre le site bien formeé et coherent
+
 ## Fonctionnalités principales:
         un boutton pour activer ou desactier de la music 
         un boutton qui va lancer le jeu a partir d'une iframe qui etait hidden au debut 

@@ -267,14 +267,14 @@
         height: 30px;
        } 
        /*lorsque on lance le jeu sur un telephone ou tablette :*/
-       @media (max-width: 768px) {
+       @media (max-width: 720px) {
     .buttons {
         position: absolute ;
-        
-        top: 1% ;
-        left: 10%;
+        top: 30% ;
+        left: 4%;
         min-width: max-content;
         min-height: max-content;
+        gap: 50px;
         width: 70% ;
         height: auto ;
         margin: 20px 40px auto ;
@@ -283,17 +283,20 @@
     .iframe-container {
         position: absolute ;
         top:  50%;
-        left:63% ;
+        left:60% ;
         min-width: fit-content;
         min-height: fit-content;
         
-        width: 90% ;
+        width: 75% ;
         
     }
     
     .container {
         flex-direction: column;
         align-items: center;
+    }
+    .content-iframe{
+        width: 100%;
     }
     
     .back-button {
