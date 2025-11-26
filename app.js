@@ -511,7 +511,7 @@
 
       
 
-        }
+        
         p{
             text-align:center;
             font-family: Georgia, 'Times New Roman', Times, serif;
@@ -528,6 +528,7 @@
                 padding: 15px;
                 max-height: 98vh;
             }
+        }
             
           
           
@@ -624,7 +625,7 @@
 
       
 
-        }
+        
       
 
         
@@ -645,13 +646,9 @@
         ol {
         padding-left: 15px;
 
-
-
-        
-        
         }
             
-          
+        }
           
     </style>
 </head>
