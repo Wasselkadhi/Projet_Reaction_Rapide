@@ -613,7 +613,10 @@
                
 
             }
+        ol {
+        padding-left: 15px;
 
+        }
 
      
 
