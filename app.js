@@ -642,7 +642,9 @@
             padding: 15px;
             max-height: 98vh;
             }
-        li {
+        ol {
+        padding-left: 15px;
+
 
 
         
