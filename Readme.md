@@ -48,3 +48,4 @@
         a l'aide de cour de javascript j'ai resolu le probleme de l'affichage de timer avec setInterval et setTimeout ainsi que l'utilisation des  methodes predifinis comme classList forEach et des autres  
 
 ## Lien vers la page GitHub Pages (rendu final):
+        https://wasselkadhi.github.io/Projet_Reaction_Rapide/
